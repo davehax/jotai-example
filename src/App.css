@@ -1,6 +1,7 @@
 html,
 body {
-    background-color: black;
+    padding: 0;
+    margin: 0;
     font-size: 20px;
     font-family: sans-serif;
     line-height: 1.6;
@@ -15,18 +16,48 @@ h6 {
     margin: 0 0 0.66rem;
 }
 
+[data-theme="light"] {
+    --theme-app-background-color: aliceblue;
+    --theme-section-background-color: #fff;
+    --theme-text-color: #000;
+    --theme-shadow-color: rgba(0, 0, 0, 0.5);
+    --theme-border-color: blue;
+}
+
+[data-theme="dark"] {
+    --theme-app-background-color: rgb(30, 0, 50);
+    --theme-section-background-color: #000;
+    --theme-text-color: #fff;
+    --theme-shadow-color: blue;
+    --theme-border-color: azure;
+}
+
+.app {
+    background-color: var(--theme-app-background-color);
+    color: var(--theme-text-color);
+    padding: 0.1px;
+    min-height: 100vh;
+}
+
 .section {
     margin: 1rem;
     padding: 1rem;
-    background-color: white;
+    background-color: var(--theme-section-background-color);
     border-radius: 0.5rem;
-    border: 2px solid azure;
-    box-shadow: 0px 1rem 2rem -1rem blue;
+    border: 2px solid var(--theme-border-color);
+    box-shadow: 0px 1rem 2rem -1rem var(--theme-shadow-color);
 }
 
 button {
     padding: 0.5rem 1rem;
     margin: 0 0.2rem 0 0;
+}
+
+table {
+    border: 1px solid var(--theme-border-color);
+    margin: 1rem 0;
+    border-collapse: collapse;
+    background-color: var(--theme-app-background-color);
 }
 
 th {
@@ -36,5 +67,6 @@ th {
 td,
 th {
     text-align: left;
-    padding: 0.2rem;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--theme-border-color);
 }

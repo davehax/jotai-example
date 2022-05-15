@@ -2,17 +2,27 @@ import { atom, useAtom, useAtomValue } from 'jotai';
 import { clickCounterState } from '../GlobalState/ClickCounter';
 import * as React from 'react';
 import { useResetAtom } from 'jotai/utils';
+import { Theme, themeState } from '../GlobalState/Theme';
 
-const colours = ['white', 'cyan', 'magenta', 'yellow'];
+const lightThemeColours = ['white', 'cyan', 'magenta', 'yellow'];
+const darkThemeColours = ['black', 'blue', 'purple', 'gold'];
 
 // define a 'derived state'
 // we take the value of 'clickCounterState' and convert that into a new piece of state
 // as the value of 'clickCounterState' is updated this derived state is then updated
 const backgroundColourState = atom(
     (get) => {
-        // clickCounterState is defined in GlobalState/ClickCounter.ts
         // this backgroundColourState atom will be updated if the clickCounterState atom is updated anywhere else in the app
+
+        // clickCounterState is defined in GlobalState/ClickCounter.ts
         const count = get(clickCounterState);
+
+        // themeState is defined in GlobalState/Theme.ts
+        const theme = get(themeState);
+
+        const colours = theme === Theme.light 
+            ? lightThemeColours 
+            : darkThemeColours;
 
         // retrieve the background colour from our colours array
         const index = Math.abs(count) % colours.length;
@@ -39,7 +49,7 @@ export const GlobalExample: React.FC = () => {
     const onResetButtonClicked = () => resetClickCounter();
 
     return (
-        <div className="section" style={{ backgroundColor: backgroundColour }}>
+        <div className="section text-shadowed" style={{ backgroundColor: backgroundColour }}>
             <h1>Global State Example</h1>
             <p>Click Counter: {clickCounter}</p>
             <button onClick={onClickMeButtonClicked}>Click Me!</button>
