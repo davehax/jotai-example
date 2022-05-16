@@ -1,7 +1,7 @@
 import { useAtomValue, atom, useAtom } from 'jotai';
 import { atomWithReset, useResetAtom } from 'jotai/utils';
 import * as React from 'react';
-import { ErrorBoundary, useErrorHandler } from 'react-error-boundary'; // https://www.npmjs.com/package/react-error-boundary
+import { ErrorBoundary } from 'react-error-boundary'; // https://www.npmjs.com/package/react-error-boundary
 
 // function that returns a promise that resolves after a given amount of milliseconds
 const wait = (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds));
