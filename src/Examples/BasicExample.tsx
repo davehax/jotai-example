@@ -7,8 +7,8 @@ import { atom, useAtom, useAtomValue } from 'jotai';
 // https://jotai.org/docs/api/core#atom
 
 
-// define a piece of global state that can be consumed by using 'useRecoilState(textState)'
-// note: if we were to define this atom in a shared library sort of way then it would be considered truly 'global'
+// define a piece of global state that can be consumed by using 'useAtom(textState)' [read/write] or 'useAtomValue(textState)' [read only]
+// note: if we were to define this atom in a shared library sort of way, or export it from this function, then it would be considered truly 'global'
 const textState = atom('');
 
 // define a piece of 'derived state'
@@ -43,7 +43,7 @@ function CharacterCounter() {
 
 // simple controlled functional component
 function TextInput() {
-    // use the getter and setter for the textState atom created by the useRecoilState(...) function
+    // use the getter and setter for the textState atom created by the useAtom(...) function
     const [text, setText] = useAtom(textState);
 
     const onChange = (event: any) => {
