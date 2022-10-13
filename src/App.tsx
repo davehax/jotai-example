@@ -6,6 +6,7 @@ import { AsyncExample } from './Examples/AsyncExample';
 import { ThemerExample } from './Examples/ThemerExample';
 import { Provider } from 'jotai';
 import { Theme } from './Theme';
+import ReloadExample from "./Examples/ReloadExample";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <BasicExample />
                     <GlobalExample />
                     <AsyncExample />
+                    <ReloadExample />
                 </div>
             </Theme>
         </Provider>
